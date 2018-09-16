@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Payment from "./Payments";
 
 class Header extends React.Component {
   renderContent() {
@@ -12,7 +13,14 @@ class Header extends React.Component {
         return <a href="/auth/google">Login In With Google</a>;
         break;
       default:
-        return <a href="api/log_out">Logout</a>;
+        return [
+          <li key="1">
+            <Payment />
+          </li>,
+          <li key="2">
+            <a href="api/log_out">Logout</a>
+          </li>
+        ];
     }
   }
   render() {
@@ -23,7 +31,7 @@ class Header extends React.Component {
             Emily
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>{this.renderContent()}</li>
+            {this.renderContent()}
           </ul>
         </div>
       </nav>

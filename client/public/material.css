@@ -12,3 +12,9 @@ nav {
   background-color: #2196f3 !important;
   width: 100%;
 }
+
+.btn,
+.btn-large,
+.btn-small {
+  background-color: #1d74c7 !important;
+}
