@@ -16,10 +16,12 @@ const newsurvey = function() {
 };
 
 class App extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUser();
+    console.log("isne bhi");
   }
   render() {
+    console.log("render1");
     return (
       <div>
         <BrowserRouter>

@@ -3,8 +3,19 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Header extends React.Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return "";
+        break;
+      case false:
+        return <a href="/auth/google">Login In With Google</a>;
+        break;
+      default:
+        return <a href="api/log_out">Logout</a>;
+    }
+  }
   render() {
-    console.log(this.props);
     return (
       <nav>
         <div className="nav-wrapper">
@@ -12,9 +23,7 @@ class Header extends React.Component {
             Emily
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <a href="/auth/google">Login In With Google</a>
-            </li>
+            <li>{this.renderContent()}</li>
           </ul>
         </div>
       </nav>
