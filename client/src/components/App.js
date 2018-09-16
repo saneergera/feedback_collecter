@@ -17,7 +17,7 @@ const newsurvey = function() {
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.fetchUser;
+    this.props.fetchUser();
   }
   render() {
     return (
