@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 require("./routes/auth_routes.js")(app);
 require("./routes/payments")(app);
 
-if ((process.env.NODE_ENV = "production")) {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("./client/build"));
 
   app.use("*", (req, res) => {
