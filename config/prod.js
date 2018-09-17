@@ -4,5 +4,6 @@ module.exports = {
   mongooseURI: process.env.MANGOOSEURI,
   cookieKey: process.env.COOKIEKEY,
   publishKey: process.env.PUBLISHKEY,
-  secretKey: process.env.SECRETKEY
+  secretKey: process.env.SECRETKEY,
+  absoluteURI: "http://dry-river-45790.herokuapp.com"
 };
