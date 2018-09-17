@@ -17,7 +17,8 @@ class Header extends React.Component {
           <li key="1">
             <Payment />
           </li>,
-          <li key="2">
+          <li key="2">{this.props.auth.credits} Credits</li>,
+          <li key="3">
             <a href="api/log_out">Logout</a>
           </li>
         ];

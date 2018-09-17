@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StripeCheckout from "react-stripe-checkout";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Payment extends React.Component {
-  componentWillMount() {
-    console.log(process.env.REACT_APP_STRIPE_KEY);
-  }
   render() {
     return (
       <StripeCheckout
@@ -13,7 +12,7 @@ class Payment extends React.Component {
         description="$5 for 5 emails"
         amount={500}
         token={token => {
-          console.log(token);
+          this.props.stripe(token);
         }}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
@@ -25,4 +24,7 @@ class Payment extends React.Component {
   }
 }
 
-export default Payment;
+export default connect(
+  null,
+  actions
+)(Payment);
