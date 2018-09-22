@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
 import finalReducer from "./reducers";
 import App from "./components/App";
-
+import axios from "axios";
+window.axios = axios;
+window.saneer = "saneer";
 const store = createStore(finalReducer, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(

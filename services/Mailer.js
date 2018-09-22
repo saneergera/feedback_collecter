@@ -1,20 +1,29 @@
-const sendgrid = require(sendgrid);
-const helper = sendgrid.mail;
+const sgMail = require("@sendgrid/mail");
 const keys = require("../config/keys");
 
-class Mailer extends helper.Mail {
-  constructor({ subject, recipients }, content) {
-    super();
-    this.fromEmail = new helper.Email("no-reply@emaily.com");
-    this.subject = subject;
-    this.body = new helper.Content("text/plain", content);
-    this.recipients = this.formatAddresses(recipients);
-  }
+class Mailer {
+  constructor({ subject, recipients }, content, res) {
+    sgMail.setApiKey(keys.sendGridKey);
+    const msg = {
+      to: recipients.map(function(p) {
+        return p.email;
+      }),
+      from: "sender@example.org",
+      subject: subject,
+      html: content
+    };
 
-  formatAddresses(recipients) {
-    return recipients.map(email => {
-      return new helper.Email(email);
-    });
+    sgMail
+      .send(msg)
+      .then(() => {
+        res.send({ hello: "h" });
+        console.log("hello");
+      })
+      .catch(error => {
+        console.error(error.toString());
+        const { message, code, response } = error;
+        const { headers, body } = response;
+      });
   }
 }
 

@@ -18,3 +18,8 @@ nav {
 .btn-small {
   background-color: #1d74c7 !important;
 }
+
+form {
+  position: relative;
+  top: 100px;
+}

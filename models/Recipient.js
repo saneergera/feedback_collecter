@@ -1,4 +1,4 @@
-const mangoose = require("mangoose");
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const Recipients = new Schema({

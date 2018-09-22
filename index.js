@@ -6,6 +6,7 @@ const passport = require("passport");
 
 const keys = require("./config/keys.js");
 require("./models/User.js");
+require("./models/Survey");
 require("./services/passport.js");
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 require("./routes/auth_routes.js")(app);
+require("./routes/surveyRoutes.js")(app);
 require("./routes/payments")(app);
 
 if (process.env.NODE_ENV === "production") {
